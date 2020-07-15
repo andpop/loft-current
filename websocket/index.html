@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+" crossorigin="anonymous">
+    <style>
+        .panel {
+            height: 300px;
+        }
+        #messageContainer {
+            overflow-y: hidden;
+            height: 74%;
+        }
+        #messageContainer:hover {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Сообщения</h3>
+        </div>
+        <ul class="list-group" id="messageContainer">
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-sm-10">
+            <input type="text" id="messageText" class="form-control" placeholder="Введите сообщение...">
+        </div>
+        <div class="col-sm-2">
+            <button class="btn btn-default" id="sendButton">отправить</button>
+        </div>
+    </div>
+    
+    <script>
+        const socket = new WebSocket("ws://localhost:8080");
+        const messageText = document.querySelector('#messageText');
+        const sendButton = document.querySelector('#sendButton');
+        const messageContainer = document.querySelector('#messageContainer');
+
+        socket.addEventListener('message', function (event) {
+            addMessage(event.data);
+        });
+
+        socket.addEventListener('error', function() {
+            alert('Соединение закрыто или не может быть открыто');
+        });
+
+        function addMessage(message) {
+            const messageItem = document.createElement('li');
+
+            messageItem.className = "list-group-item";
+            messageItem.textContent = message;
+
+            messageContainer.appendChild(messageItem);
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+
+        function sendMessage() {
+            socket.send(messageText.value);
+            messageText.value = '';
+        }
+
+        sendButton.addEventListener('click', sendMessage);
+        messageText.addEventListener('change', sendMessage);
+    </script>
+</body>
+</html>
