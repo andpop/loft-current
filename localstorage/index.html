@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body class="container text-center">
+    <div>
+        ФИО:<br>
+        <input type="text" id="myName">
+    </div>
+    <div>
+        Дата рождения:<br>
+        <input type="text" id="bday">
+    </div>
+    <div>
+        О себе:<br>
+        <textarea id="about"></textarea>
+    </div>
+    <div>
+        <label>
+            <input type="checkbox" id="isSessionStorage">
+            использовать session storage
+        </label>
+    </div>
+    <div>
+        <button id="save">Сохранить</button>
+        <button id="load">Загрузить</button>
+    </div>
+
+    <script>
+        const myName = document.querySelector('#myName');
+        const bday = document.querySelector('#bday');
+        const about = document.querySelector('#about');
+
+        const save = document.querySelector('#save');
+        const load = document.querySelector('#load');
+        const isSessionStorage = document.querySelector('#isSessionStorage');
+
+        let storage = localStorage;
+
+        save.addEventListener('click', function() {
+            try {
+                storage.data = JSON.stringify({
+                    myName: myName.value,
+                    bday: bday.value,
+                    about: about.value
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        });
+
+        load.addEventListener('click', function() {
+            const data = JSON.parse(storage.data || '{}');
+
+            myName.value = data.myName || '';
+            bday.value = data.bday || '';
+            about.value = data.about || '';
+        });
+
+        isSessionStorage.addEventListener('change', function(e) {
+            storage = isSessionStorage ? sessionStorage : localStorage; 
+        });
+
+        window.addEventListener('storage', function(event) {
+            load.click();
+        });
+
+    </script>
+    
+</body>
+</html>
