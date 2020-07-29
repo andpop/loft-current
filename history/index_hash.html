@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body class="container">
+    <ul class="list">
+        <li><a href="#news">Новости</a></li>
+        <li><a href="#friends">Друзья</a></li>
+    </ul>
+    <div class="jumbotron news-content hide">
+        <h1>Новости</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis aspernatur error dolore dolorum pariatur quod dignissimos nesciunt, delectus nisi harum nam ea iure quas provident non iusto consequatur! Quidem, ex.
+        </p>
+    </div>
+    <div class="jumbotron friends-content hide">
+        <h1>Друзья</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis aspernatur error dolore dolorum pariatur quod dignissimos nesciunt, delectus nisi harum nam ea iure quas provident non iusto consequatur! Quidem, ex.
+        </p>
+    </div>
+    
+    <script>
+        const pageMap = {
+            '#news': '.news-content',
+            '#friends': '.friends-content'
+        };
+
+        let currentPage;
+
+        window.addEventListener('hashchange', handlePage);
+
+        handlePage();
+
+        function handlePage() {
+            const pageName = pageMap[location.hash];
+            
+            if (pageName) {
+                const page = document.querySelector(pageName);
+
+                if (page) {
+                    if (currentPage) {
+                        currentPage.classList.add('hide');
+                    }
+
+                    page.classList.remove('hide');
+                    currentPage = page;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        input[type=file] {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+        .title-label {
+            cursor: pointer;
+        }
+        .label-image {
+            font-size: 30px;
+        }
+        #theImage {
+            width: 200px;
+        }
+    </style>
+</head>
+<body class="container text-center">
+    <input type="file" id="photoInput"> 
+    <label for="photoInput" class="file-label text-center">
+        <div class="label-image glyphicon glyphicon-upload"></div>
+        <div class="label-text">Выбрать файл</div>
+    </label>
+    <div>
+        <img src="" class="img-circle" id="theImage">
+    </div>
+
+    <script>
+        const theImage = document.querySelector('#theImage');
+        const photoInput = document.querySelector('#photoInput');
+        const fileReader = new FileReader();
+
+        fileReader.addEventListener('load', function() {
+            theImage.src = fileReader.result;
+        });
+
+        photoInput.addEventListener('change', function(e) {
+            const file = e.target.file[0];
+
+            if (file) {
+                if (file.size > 300 * 1024) {
+                    alert('Слишком большой файл');
+                } else {
+                    fileReader.readAsDataURL(file);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
