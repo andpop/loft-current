@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <style>
+        .container {
+            margin: 0;
+        }
+
+        #friends {
+            text-align: left;
+        }
+
+        .friend {
+            display: inline-block;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="container">
+    <div id="friends"></div>
+    
+    <script>
+        const friendsNode = document.querySelector('#friends');
+        const data = [
+            {
+                name: 'Иван',
+                lastName: 'Петров',
+                photo: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
+            },
+            {
+                name: 'Андрей',
+                lastName: 'Никитин',
+                photo: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
+            }
+        ];
+
+        renderFriends(data);
+
+        function renderFriends(friends) {
+            friends.map(createFriendNode).forEach(node => {
+                friendsNode.appendChild(node);
+            });
+        }
+
+        function createFriendNode(friend) {
+            const friendNode = document.createElement('div');
+            const firstNameNode = document.createElement('div');
+            const lastNameNode = document.createElement('div');
+            const photoNode = document.createElement('img');
+
+            friendNode.classList.add('friend');
+            firstNameNode.textContent = friend.name;
+            lastNameNode.textContent = friend.lastName;
+            photoNode.src = friend.photo;
+
+            friendNode.appendChild(photoNode);
+            friendNode.appendChild(firstNameNode);
+            friendNode.appendChild(lastNameNode);
+
+            return friendNode;
+        } 
+    </script>
+</body>
+</html>
