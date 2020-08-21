@@ -1,18 +1,22 @@
 {
-    list: [
+    names: [
         {
-            name: 'Иван',
-            lastName: 'Петров',
-            photo: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
+            name: 'Сергей',
+            lastName: 'Андреев',
         },
         {
-            name: 'Андрей',
-            lastName: 'Никитин',
-            photo: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'
+            name: 'Николай',
+            lastName: 'Петров',
         }
     ]
 }
 
+<ul>
+    {{#each names}}
+    <li>{{lastName}}</li>
+    {{/each}}
+
+</ul>
 
 <div class="friends">
 {{#each list}}
