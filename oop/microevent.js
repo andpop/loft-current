@@ -30,3 +30,12 @@ MicroEvent.mixin	= function(destObject){
 	}
 	return destObject;
 }
+
+
+var Ticker	= function( interval ){
+	var self	= this;
+	setInterval(function(){
+		self.trigger('tick', new Date());
+	}, 1000);
+};
+
