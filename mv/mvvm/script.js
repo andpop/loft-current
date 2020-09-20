@@ -9,15 +9,17 @@ for (const el of bindElements) {
         bindMap[bindTo] = [];
     }
 
-    bindMap[bindTo].push(e);
+    bindMap[bindTo].push(el);
 }
+
+console.log(bindMap);
 
 function bindValue(bindingName, value) {
     scope[bindingName] = value;
 }
 
 function syncBindings(target) {
-    for (const bindTo in scrope) {
+    for (const bindTo in scope) {
         const value = scope[bindTo];
 
         for (const el of bindMap[bindTo]) {
