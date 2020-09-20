@@ -12,9 +12,10 @@ Handlebars.registerHelper('formatDate', ts => {
     return new Date(ts * 1000).toLocaleString();
 });
 
-Model.login(5267932, 2 | 8192)
-    .then(function() {
-        return Model.getHelper({ name_case: 'gen' }).then(([me]) => {
+// Model.login(5267932, 2 | 8192)
+Model.login(7565225, 2 | 8192)
+    .then(() => {
+        return Model.getUser({ name_case: 'gen' }).then(([me]) => {
             const header = document.querySelector('#header');
             header.innerHTML = View.render('header', me);
         });

@@ -1,15 +1,17 @@
 window.Model = {
     login(appId, perms) {
         return new Promise((resolve, reject) => {
+            // console.log('before ', appId);
             VK.init({
-                appId: appId
+                apiId: appId
             });
+            // console.log('after ', appId);
 
             VK.Auth.login(response => {
                 if (response.session) {
                     resolve(response);
                 } else {
-                    reject(new Error('Не удалось авторизоваься'));
+                    reject(new Error('Не удалось авторизоваться'));
                 }
             }, perms);
         });
