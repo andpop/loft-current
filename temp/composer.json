@@ -1,0 +1,5 @@
+{
+    "require": {
+        "fenix/hangman": "^1.2"
+    }
+}

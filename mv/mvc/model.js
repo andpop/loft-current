@@ -1,11 +1,9 @@
 window.Model = {
     login(appId, perms) {
         return new Promise((resolve, reject) => {
-            // console.log('before ', appId);
             VK.init({
                 apiId: appId
             });
-            // console.log('after ', appId);
 
             VK.Auth.login(response => {
                 if (response.session) {
@@ -37,6 +35,9 @@ window.Model = {
     },
     getNews(params = {}) {
         return this.callApi('newsfeed.get', params);
+    },
+    getVideo(params = {}) {
+        return this.callApi('video.get', params);
     }
 };
 

@@ -8,6 +8,11 @@ window.Controller = {
         const results = document.querySelector('#results');
         const news = await Model.getNews({ filters: 'post', count: 20 });
         results.innerHTML = View.render('news', {list: news.items});
+    },
+    async videoRoute() {
+        const results = document.querySelector('#results');
+        const video = await Model.getVideos();
+        results.innerHTML = View.render('video', {list: video.items});
     }
 };
 
