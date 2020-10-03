@@ -1,4 +1,7 @@
-window.Controller = {
+const Model = require('./model.js');
+const View = require('./view.js');
+
+module.exports = {
     async friendsRoute() {
         const results = document.querySelector('#results');
         const friends = await Model.getFriends({ fields: 'photo_100'});
@@ -15,5 +18,3 @@ window.Controller = {
         results.innerHTML = View.render('video', {list: video.items});
     }
 };
-
-// задача - прослойка между model и view

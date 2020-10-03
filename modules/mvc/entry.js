@@ -14,14 +14,21 @@ Handlebars.registerHelper('formatDate', ts => {
 
 const Model = require('./model.js');
 const View = require('./view.js');
+const Router = require('./router.js');
 
-// Model.login(5267932, 2 | 8192)
 Model.login(7565225, 2 | 8192)
-    .then(() => {
-        return Model.getUser({ name_case: 'gen' }).then(([me]) => {
+    .then(() => Model.getUser({ name_case: 'gen' }))
+    .then(([me]) => {
             const header = document.querySelector('#header');
             header.innerHTML = View.render('header', me);
-        });
+
+            document.addEventListener('click', e => {
+                const {route} = e.target.dataset;
+
+                if (route) {
+                   Router.handle(route);
+                }
+            });
     })
     .catch(e => {
         console.error(e);
