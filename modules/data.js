@@ -1,7 +1,10 @@
 // data.js
-const name = "Сергей";
+// module.exports = name;
 
-module.exports = [
-    {name: "Иван"},
-    {name: "Светлана"}
-];
+// let name = "Сергей";
+// module.exports = [
+//     {name: "Иван"},
+//     {name: "Светлана"}
+// ];
+
+// module.exports.name = name;

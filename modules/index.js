@@ -1,6 +1,8 @@
 // index.js
-const friends = require('./data.js');
+// const friends = require('./data.js');
+const n = require('./data.js');
 
-for (const friend of friends) {
-    console.log(friend.name);
-};
+console.log(n);
+// for (const friend of friends) {
+//     console.log(friend.name);
+// };
