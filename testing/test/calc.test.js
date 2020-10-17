@@ -26,6 +26,10 @@ describe('div', () => {
 
     test('на не число', () => {
         expect(calc.div(10, 'sdfdfdf')).toBe(10);
+        expect(calc.div(10, {})).toBe(10);
+        expect(calc.div(10, Infinity)).toBe(10);
+        expect(calc.div(10, false)).toBe(10);
+
     });
 
 });
