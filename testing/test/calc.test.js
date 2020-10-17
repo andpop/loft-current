@@ -16,14 +16,15 @@ describe('div', () => {
         expect(calc.div(10, 5)).toBe(2);
     });
 
-    test('на 0', () => {
-        expect(calc.div(10, 0)).toBe(10);
-    });
+    // test('на 0', () => {
+    //     expect(calc.div(10, 0)).toBe(10);
+    // });
 
-    test('без второго аргумента', () => {
-        expect(calc.div(10)).toBe(10);
-    });
+    // test('без второго аргумента', () => {
+    //     expect(calc.div(10)).toBe(10);
+    // });
 
+<<<<<<< HEAD
     test('на не число', () => {
         expect(calc.div(10, 'sdfdfdf')).toBe(10);
         expect(calc.div(10, {})).toBe(10);
@@ -31,5 +32,10 @@ describe('div', () => {
         expect(calc.div(10, false)).toBe(10);
 
     });
+=======
+    // test('на не число', () => {
+    //     expect(calc.div(10, 'sdfdfdf')).toBe(10);
+    // });
+>>>>>>> refs/remotes/origin/master
 
 });

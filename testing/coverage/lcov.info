@@ -7,6 +7,7 @@ FNF:3
 FNH:3
 FNDA:1,(anonymous_0)
 FNDA:1,(anonymous_1)
+<<<<<<< HEAD
 FNDA:4,(anonymous_2)
 DA:4,1
 DA:8,1
@@ -22,4 +23,21 @@ BRDA:12,1,0,4
 BRDA:12,1,1,2
 BRF:4
 BRH:4
+=======
+FNDA:1,(anonymous_2)
+DA:4,1
+DA:8,1
+DA:12,1
+DA:13,0
+DA:16,1
+DA:20,1
+LF:6
+LH:5
+BRDA:12,0,0,0
+BRDA:12,0,1,1
+BRDA:12,1,0,1
+BRDA:12,1,1,1
+BRF:4
+BRH:3
+>>>>>>> refs/remotes/origin/master
 end_of_record
